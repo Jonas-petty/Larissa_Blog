@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { ReactDOM } from 'react-dom/client'
 import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
+import ScrollReveal from 'scrollreveal'
 
 import Post from "./Post";
 
 function PostsList({db}) {
+    window.screen = ScrollReveal({reset: true})
     const [posts, setPosts] = useState([])
 
 

@@ -24,7 +24,6 @@ import Header from "./Header";
 import PageRoutes from './PageRoutes'
 
 function App() {
-
   return (
     <Router>
       <div className="App">

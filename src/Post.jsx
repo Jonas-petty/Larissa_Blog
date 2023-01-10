@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ScrollReveal from 'scrollreveal'
 
 const PostContainer = styled.div`
     background-color: #FFFFFF;
@@ -43,8 +44,10 @@ function Post({title, createdAt, content, id}) {
     let dateString = `${date.getDate()} de ${date.toLocaleString('pt-BR', {month: 'long'})}, ${date.getFullYear()}`
 
     const data = {title, dateString, content}
+
+    ScrollReveal().reveal('.post')
     return (
-        <PostContainer>
+        <PostContainer className='post'>
             <Link to={`/posts/${id}`} state={data}>
                 <p className='info'>Escrito por Larissa Felix em {dateString}</p>
                 <PostTitle>{title}</PostTitle>
