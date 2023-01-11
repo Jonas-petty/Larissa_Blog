@@ -1,5 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { db } from './firebase'
+import './App.css'
+
+import Header from "./Header";
+import PageRoutes from './PageRoutes'
+import Footer from './Footer';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -15,14 +21,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-import { db } from './firebase'
-import reactLogo from './assets/react.svg'
-import './App.css'
-
-import Header from "./Header";
-
-import PageRoutes from './PageRoutes'
-
 function App() {
   return (
     <Router>
@@ -30,6 +28,7 @@ function App() {
         <GlobalStyle />
         <Header />
         <PageRoutes db={db}/>
+        <Footer />
       </div>
     </Router>
   )
