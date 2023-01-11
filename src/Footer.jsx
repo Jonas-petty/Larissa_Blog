@@ -10,6 +10,10 @@ const FooterStyle = styled.footer`
     align-items: center;
     justify-content: space-between;
 
+    @media (max-width: 700px) {
+        flex-direction: column;
+    }
+
     a {
         color: #FFF;
     }
