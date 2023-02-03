@@ -12,7 +12,7 @@ function PostsList({db}) {
 
     useEffect(() => {
         onSnapshot(query(collection(db, 'Posts'), orderBy('createdAt', 'desc'), limit(10)), (snapshot) => {
-        setPosts(snapshot.docs.map((doc) => doc))
+            setPosts(snapshot.docs.map((doc) => doc))
         })
     }, [])
 

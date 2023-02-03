@@ -48,7 +48,7 @@ function Post({title, createdAt, content, id}) {
     ScrollReveal().reveal('.post')
     return (
         <PostContainer className='post'>
-            <Link to={`/posts/${id}`} state={data}>
+            <Link to={`/posts/${title}`} state={data}>
                 <p className='info'>Escrito por Larissa Felix em {dateString}</p>
                 <PostTitle>{title}</PostTitle>
                 <p className='content'>

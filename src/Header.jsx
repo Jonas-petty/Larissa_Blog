@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const HeaderDiv = styled.header`
     background: linear-gradient(90deg, #574AE8, #3EA1DB);
@@ -14,12 +15,18 @@ const Nav = styled.nav`
     flex-direction: column;
 
     .text_content {
-        h1, p {
+        h1, a {
+            color: #FFF;
+            text-decoration: none;
             font-size: 20px;
             font-weight: 400;
+            transition: 0.2s;
         }
-        color: #FFF;
-
+        
+        a:hover {
+            transform: scale(1.1);
+        }
+        
         margin-bottom: 2rem;
         display: flex;
         align-items: center;
@@ -34,7 +41,7 @@ function Header() {
             <Nav>
                 <div className="text_content">
                     <h1>Larissa</h1>
-                    <p>Blog</p>
+                    <Link to='/'>Blog</Link>
                 </div>
                 <SearchInput
                     placeholder="Pesquisar no blog" 
