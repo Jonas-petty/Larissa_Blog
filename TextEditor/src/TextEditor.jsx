@@ -93,6 +93,24 @@ const Editor = styled.div`
     }
 `
 
+const SendTextButton = styled.button`
+    cursor: pointer;
+    font-size: 1rem;
+    display: block;
+
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px auto;
+
+    background-color: #574AE8;
+    color: #EDEDED;
+
+    &:hover {
+        background-color: #3EA1DB;
+    }
+`
+
 const MenuBar = ({ editor }) => {
     if (!editor) {
         return null
@@ -281,7 +299,7 @@ function TextEditor({ editor, editorContent , SendPost }) {
         <Editor>
             <MenuBar editor={editor} />
             {editorContent}
-            <button onClick={() => SendPost(editor.getHTML())}>Terminar</button>
+            <SendTextButton onClick={() => SendPost(editor.getHTML())}>Terminar</SendTextButton>
         </Editor>
     );
 }
