@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import ScrollReveal from 'scrollreveal'
 
 const PostContainer = styled.div`
     background-color: #FFFFFF;
@@ -41,7 +40,6 @@ const PostTitle = styled.h1`
 
 function getFirstParagraph(text) {
     text = text.split("><")
-    console.log(text)
     let newParagraph = ""
     for (var i = 0; i < text.length; i++) {
         if (text[i].includes("<p>")) {
@@ -60,19 +58,12 @@ function Post({title, createdAt, content, id}) {
     
     let paragraphContent = getFirstParagraph(content)
 
-    ScrollReveal().reveal('.post')
     return (
         <PostContainer className='post'>
             <Link to={`/posts/${title}`} state={data}>
                 <p className='info'>Escrito por Larissa Felix em {dateString}</p>
                 <PostTitle>{title}</PostTitle>
-                <div className='content' dangerouslySetInnerHTML={{__html: paragraphContent}}>
-                    {/* Lorem ipsum dolor, sit amet consectetur
-                    adipisicing elit. Quas, alias ipsam neque
-                    laborum id ea delectus deleniti accusantium
-                    sunt vel enim! Assumenda fugit deserunt dolore
-                    perspiciatis excepturi itaque, vitae dicta? */}
-                </div>
+                <div className='content' dangerouslySetInnerHTML={{__html: paragraphContent}}></div>
                 
             </Link>
         </PostContainer>

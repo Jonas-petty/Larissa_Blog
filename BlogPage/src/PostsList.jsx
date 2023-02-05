@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react'
 import { ReactDOM } from 'react-dom/client'
 import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore'
-import ScrollReveal from 'scrollreveal'
 
 import Post from "./Post";
 
-function PostsList({db}) {
-    window.screen = ScrollReveal({reset: true})
+function PostsList({db, amount}) {
     const [posts, setPosts] = useState([])
 
 
     useEffect(() => {
-        onSnapshot(query(collection(db, 'Posts'), orderBy('createdAt', 'desc'), limit(10)), (snapshot) => {
+        onSnapshot(query(collection(db, 'Posts'), orderBy('createdAt', 'desc'), limit(amount)), (snapshot) => {
             setPosts(snapshot.docs.map((doc) => doc))
         })
-    }, [])
+    }, [amount])
 
     const postElements = posts.map((posts) => {
         const data = posts.data()
