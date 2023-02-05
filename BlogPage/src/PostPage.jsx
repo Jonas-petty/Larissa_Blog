@@ -65,7 +65,7 @@ function PostPage({ content }) {
             border: 1px solid #574AE8;
         }
     `
-
+    
     return (
         <PostContainer>
             {state.title && <Title>{state.title}</Title>}

@@ -39,11 +39,26 @@ const PostTitle = styled.h1`
     margin-top: 20px;
 `
 
+function getFirstParagraph(text) {
+    text = text.split("><")
+    console.log(text)
+    let newParagraph = ""
+    for (var i = 0; i < text.length; i++) {
+        if (text[i].includes("<p>")) {
+            newParagraph = text[i]
+        }
+    }
+    
+    return newParagraph
+}
+
 function Post({title, createdAt, content, id}) {
     const date = new Date(createdAt.seconds * 1000)
     let dateString = `${date.getDate()} de ${date.toLocaleString('pt-BR', {month: 'long'})}, ${date.getFullYear()}`
 
     const data = {title, dateString, content}
+    
+    let paragraphContent = getFirstParagraph(content)
 
     ScrollReveal().reveal('.post')
     return (
@@ -51,13 +66,13 @@ function Post({title, createdAt, content, id}) {
             <Link to={`/posts/${title}`} state={data}>
                 <p className='info'>Escrito por Larissa Felix em {dateString}</p>
                 <PostTitle>{title}</PostTitle>
-                <p className='content'>
-                    Lorem ipsum dolor, sit amet consectetur
+                <div className='content' dangerouslySetInnerHTML={{__html: paragraphContent}}>
+                    {/* Lorem ipsum dolor, sit amet consectetur
                     adipisicing elit. Quas, alias ipsam neque
                     laborum id ea delectus deleniti accusantium
                     sunt vel enim! Assumenda fugit deserunt dolore
-                    perspiciatis excepturi itaque, vitae dicta?
-                </p>
+                    perspiciatis excepturi itaque, vitae dicta? */}
+                </div>
                 
             </Link>
         </PostContainer>
